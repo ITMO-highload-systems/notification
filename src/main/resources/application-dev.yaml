@@ -1,0 +1,24 @@
+spring:
+  kafka:
+    client-id: ${spring.application.name}
+    consumer:
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        auto.offset.reset: latest
+        isolation.level: read_committed
+        spring.json.trusted.packages: "*"
+    bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+  application:
+    name: notification
+
+sse:
+  timeout: 3000
+
+server:
+  port: 8085
+
+eureka:
+  client:
+    enabled: false
